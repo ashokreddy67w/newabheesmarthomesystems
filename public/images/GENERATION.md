@@ -3,8 +3,9 @@
 Created with the built-in image generation tool. These are generated photographic illustrations, not documentary photographs of ABHEE projects.
 
 The hero uses `hero-02.jpg` for security, `solution-automation.jpg` for automation,
-`solution-climate.jpg` for climate and lighting, and `solution-entertainment.jpg`
-for entertainment. The other original hero assets are retained but unused.
+`projects/project-04.jpg` for home theater. Product categories use
+`solution-security.jpg`, `solution-automation.jpg`, `solution-climate.jpg`, and
+`solution-entertainment.jpg` for their matching captions. The other original hero assets are retained but unused.
 
 ## hero-01.jpg
 
@@ -54,3 +55,15 @@ Use case: photorealistic-natural. Create a single website photograph, no collage
 
 Use case: photorealistic-natural. Create a single website photograph, no collage. Wide architectural photograph of a modest premium private home cinema, two rows of comfortable charcoal fabric seats, acoustic wall panels, large blank dark projection screen, discreet warm aisle lights, physically realistic dark room exposure. Composition: landscape 16:10 frame, important subjects central for responsive cropping. Real camera photography, believable construction, restrained styling, natural imperfections, accurate perspective, subtle fine grain, neutral white balance, realistic shadows. Avoid CGI, 3D render aesthetic, plastic textures, oversaturated HDR, surreal architecture, dramatic glow, text, logos, watermarks, people.
 
+
+
+## Real Services photographs (2026-09-09)
+
+The Services cards now use real photographs, not generated images. Originals are retained without image edits; displayed with a responsive center crop to fill the card frame. They depict reference installations, not claimed ABHEE projects.
+
+| Asset | Photographer / source | License |
+| --- | --- | --- |
+| services/gate-automation.jpg | [NJR ZA](https://commons.wikimedia.org/wiki/File:Sliding_electric_gate-001.JPG) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| services/home-automation.jpg | [Jan Prucha](https://commons.wikimedia.org/wiki/File:AMX-8400.JPG) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| services/home-theater.jpg | [Geoff Sloan](https://commons.wikimedia.org/wiki/File:Dedicated_home_theater.jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
+| services/video-door-phone.jpg | [Guerrilleva](https://commons.wikimedia.org/wiki/File:Monitordevideoportero.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |

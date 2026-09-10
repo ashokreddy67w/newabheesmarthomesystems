@@ -1,12 +1,12 @@
 'use client';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {images,referenceSolutions,projects} from '@/lib/experience-content';
 import {ImagePlaceholder} from './Primitives';
 import {Home, Wrench, Network, Cpu, Headphones, ShieldCheck} from 'lucide-react';
 const heroContent = [
- {image:images.heroImages[0],category:'SECURITY & ACCESS',title:'Security that works quietly in the background.',description:'Smart access, gates and connected security for your home.'},
- {image:images.heroImages[1],category:'HOME AUTOMATION',title:'A home that moves with your day.',description:'Lighting, curtains and climate on schedules and scenes, tuned to how each room is actually used.'},
- {image:images.heroImages[2],category:'CLIMATE & LIGHTING',title:'Comfort that feels second nature.',description:'Sensor-driven comfort — lights, AC and blinds adjusting to daylight, weather and occupancy.'},
- {image:images.heroImages[3],category:'ENTERTAINMENT & AV',title:'Every room. In perfect harmony.',description:'Whole-home audio and screens, grouped by zone, controlled by voice or a single tap.'},
+ {image:images.heroImages[0],category:'SECURITY & ACCESS'},
+ {image:images.heroImages[1],category:'HOME AUTOMATION'},
+ {image:images.heroImages[2],category:'HOME THEATER'},
 ];
 // Reference-locked hero: keep copy, composition, and styling independent of the experience below.
 function Hero(){return <section className="locked-hero" id="hero" aria-label="ABHEE smart home systems">
@@ -18,16 +18,45 @@ function Hero(){return <section className="locked-hero" id="hero" aria-label="AB
 <div className="locked-photo-media"><ImagePlaceholder image={item.image} eager/></div>
 <div className="locked-item-content">
 <p className="locked-item-category">{item.category}</p>
-<h2>{item.title}</h2>
-<p className="locked-item-description">{item.description}</p>
 </div>
 </article>)}</div>
 </section>}
 
-function ReferenceSolutions(){return <section className="reference-solutions" id="solutions" aria-labelledby="reference-solutions-title">
+function ReferenceSolutions(){
+ const track=useRef<HTMLDivElement>(null);
+ const [reducedMotion,setReducedMotion]=useState(false);
+ const [paused,setPaused]=useState(false);
+ const resumeAt=useRef(0);
+ const delayAutoplay=()=>{resumeAt.current=Date.now()+5000;};
+ useEffect(()=>{
+  const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const update=()=>setReducedMotion(preference.matches);
+  update(); preference.addEventListener('change',update);
+  return ()=>preference.removeEventListener('change',update);
+ },[]);
+ const advance=useCallback((direction:number)=>{
+  const rail=track.current; if(!rail) return;
+  const card=rail.firstElementChild as HTMLElement|null; if(!card) return;
+  const step=card.getBoundingClientRect().width+parseFloat(getComputedStyle(rail).columnGap);
+  const end=rail.scrollWidth-rail.clientWidth;
+  const next=direction>0 && rail.scrollLeft>=end-2 ? 0 : direction<0 && rail.scrollLeft<=2 ? end : Math.min(end,Math.max(0,rail.scrollLeft+direction*step));
+  rail.scrollTo({left:next,behavior:reducedMotion?'instant':'smooth'});
+ },[reducedMotion]);
+ useEffect(()=>{
+  if(paused||reducedMotion) return;
+  const timer=window.setInterval(()=>{if(!document.hidden && Date.now()>=resumeAt.current) advance(1);},3500);
+  return ()=>window.clearInterval(timer);
+ },[paused,reducedMotion,advance]);
+ return <section className="reference-solutions" id="solutions" aria-labelledby="reference-solutions-title">
  <h2 id="reference-solutions-title">Services</h2>
  <p className="reference-solutions-subtitle">Smart home systems designed around the way you live.</p>
- <div className="reference-solutions-cards">{referenceSolutions.map((solution,index)=><article className="reference-solution-card" key={solution.image.src}>
+ <div className="service-carousel" role="region" aria-roledescription="carousel" aria-label="Smart home services">
+ <div className="service-carousel-controls">
+  <button type="button" onClick={()=>{delayAutoplay();advance(-1);}} aria-label="Previous service">←</button>
+  <button type="button" onClick={()=>setPaused(value=>!value)} disabled={reducedMotion} aria-pressed={paused} aria-label={reducedMotion?"Automatic scrolling off for reduced motion":paused?"Play automatic scrolling":"Pause automatic scrolling"}>{reducedMotion?"Auto off":paused?"Play":"Pause"}</button>
+  <button type="button" onClick={()=>{delayAutoplay();advance(1);}} aria-label="Next service">→</button>
+ </div>
+ <div ref={track} className="reference-solutions-cards" tabIndex={0} aria-label="Swipe or scroll to explore services" onPointerDown={delayAutoplay} onPointerMove={event=>{if(event.buttons) delayAutoplay();}} onPointerUp={delayAutoplay} onPointerCancel={delayAutoplay} onWheel={delayAutoplay} onKeyDown={event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();delayAutoplay();advance(event.key==='ArrowRight'?1:-1);}}}>{referenceSolutions.map((solution,index)=><article className="reference-solution-card" key={solution.image.src}>
   <div className="reference-solution-image"><ImagePlaceholder image={solution.image}/></div>
   <div className="reference-solution-copy">
    <p className="reference-solution-number">{String(index+1).padStart(2,'0')}.</p>
@@ -35,6 +64,7 @@ function ReferenceSolutions(){return <section className="reference-solutions" id
    <p className="reference-solution-description">{solution.description}</p>
   </div>
  </article>)}</div>
+ </div>
  </section>}
 
 function ProjectsSection(){return <section className="projects-reference" id="projects" aria-labelledby="projects-reference-title">
