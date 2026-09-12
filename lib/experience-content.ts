@@ -6,7 +6,10 @@
     const media = (name: string, alt: string, ratio = '16/10'): ExperienceImage => ({src: `/images/${name}.jpg`, alt, ratio});
 
     // Shared across the hero, Services and Products so image updates stay consistent.
-    const homeAutomationImage: ExperienceImage = media('services/home-automation-new-20260910','New smart home touchscreen controlling lighting, curtains and temperature beside a sunlit living room');
+    const homeAutomationImage: ExperienceImage = {
+    ...media('services/home-automation-new-20260910','ABHEE smart home automation poster with connected home and mobile controls'),
+    fit:'contain',
+    };
 
     export const images = {
     heroImages: [
@@ -44,7 +47,7 @@
     };
 
     // Populate only with verified information. Empty lists never imply partnerships or locations.
-    export const business = { email: 'info.abheesmarthome@gmail.com', whatsapp: '', social: [] as {name:string;url:string}[] };
+    export const business = { email: 'info.abheesmarthome@gmail.com', whatsapp: '919248123456', social: [{name:'Instagram',url:'https://www.instagram.com/abhee_smarthome_systems/'},{name:'YouTube',url:'https://www.youtube.com/@abheesmarthomesystems'},{name:'Facebook',url:'https://www.facebook.com/share/19d2sT5V8r/'}] as {name:string;url:string}[] };
 
     // Illustrative product catalog — grouped into four broad product categories. Populate with verified SKUs, specs and brand names
     // before publishing; until then these are representative smart-home product
@@ -90,8 +93,6 @@
     products:[
     {name:'Whole-Home Audio',description:'Zoned, multi-room sound with independent control in every space.'},
     {name:'Home Theatre Systems',description:'Projection, screen, seating and acoustics tuned for a dedicated cinema room.'},
-    {name:'Multi-Room Video Distribution',description:'One source, every screen — distributed AV without a tangle of cables.'},
-    {name:'Unified AV Control',description:'A single remote or app for every screen and speaker in the home.'},
-    ],
+    {name:'Multi-Room Video Distribution',description:'One source, every screen — distributed AV without a tangle of cables.'},    ],
     },
     ];

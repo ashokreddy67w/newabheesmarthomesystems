@@ -51,11 +51,6 @@ function ReferenceSolutions(){
  <h2 id="reference-solutions-title">Services</h2>
  <p className="reference-solutions-subtitle">Smart home systems designed around the way you live.</p>
  <div className="service-carousel" role="region" aria-roledescription="carousel" aria-label="Smart home services">
- <div className="service-carousel-controls">
-  <button type="button" onClick={()=>{delayAutoplay();advance(-1);}} aria-label="Previous service">←</button>
-  <button type="button" onClick={()=>setPaused(value=>!value)} disabled={reducedMotion} aria-pressed={paused} aria-label={reducedMotion?"Automatic scrolling off for reduced motion":paused?"Play automatic scrolling":"Pause automatic scrolling"}>{reducedMotion?"Auto off":paused?"Play":"Pause"}</button>
-  <button type="button" onClick={()=>{delayAutoplay();advance(1);}} aria-label="Next service">→</button>
- </div>
  <div ref={track} className="reference-solutions-cards" tabIndex={0} aria-label="Swipe or scroll to explore services" onPointerDown={delayAutoplay} onPointerMove={event=>{if(event.buttons) delayAutoplay();}} onPointerUp={delayAutoplay} onPointerCancel={delayAutoplay} onWheel={delayAutoplay} onKeyDown={event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();delayAutoplay();advance(event.key==='ArrowRight'?1:-1);}}}>{referenceSolutions.map((solution,index)=><article className="reference-solution-card" key={solution.image.src}>
   <div className="reference-solution-image"><ImagePlaceholder image={solution.image}/></div>
   <div className="reference-solution-copy">
@@ -96,4 +91,32 @@ function WhyAbheeSection(){return <section className="why-reference" id="why-abh
  </div>
  </section>}
 
-export default function Homepage(){return <div className="abhee-experience hero-only"><Hero/><ReferenceSolutions/><ProjectsSection/><WhyAbheeSection/></div>}
+const faqs = [
+ {question:'What is a smart home system?',answer:'A smart home connects everyday features such as lighting, curtains, air conditioning and security so they can work together. You can manage compatible devices through switches, a control panel or your phone, and set routines for mornings, evenings or leaving home.'},
+ {question:'What can ABHEE automate in my home?',answer:'ABHEE offers solutions for lighting, curtains and blinds, climate control, gates, smart locks, video door phones, CCTV and home entertainment. We help you choose what suits your home, daily routines and budget.'},
+ {question:'Can I add automation to an existing home?',answer:'Yes. Many existing flats and independent homes can use retrofit or wireless solutions without extensive rewiring. The right approach depends on your wiring, available space and devices. A site assessment helps identify any changes needed before installation.'},
+ {question:'Can I control my home from my smartphone?',answer:'Compatible systems let you check and control connected devices through a smartphone app while you are away. Remote access needs a working internet connection at home and on your phone. The available controls depend on the system you choose.'},
+ {question:'Can security and home automation work together?',answer:'Compatible cameras, door phones, locks and sensors can be connected with your automation setup. For example, an entry sensor may trigger a light or send an alert. We review compatibility and access settings when planning your system.'},
+ {question:'Will my existing switches and devices need replacement?',answer:'Not always. Some installations can retain existing switches and appliances with compatible control modules. Others may need new switches or devices. We check your current setup and explain what can be reused before recommending replacements.'},
+ {question:'How does installation and support work?',answer:'The process starts with a discussion of your needs and a site assessment, followed by a proposed setup and installation plan. Ask for the schedule, device warranties and support terms in your quotation. Handover should include a walkthrough so your household knows how to use the system.'},
+ {question:'How much does a smart home system cost?',answer:'Pricing depends on the size of your home, the rooms and features you want to automate, device choices and any wiring work. A few smart lights will cost less than a whole-home setup. Contact ABHEE for a quotation based on your requirements and budget.'},
+ {question:'Can I expand the system later?',answer:'Many systems can be expanded in stages, starting with one room or a few functions. Tell us about future plans early so we can consider compatible devices, wiring and system capacity. New additions depend on the capabilities of your chosen setup.'},
+ {question:'Is a smart home easy for everyone in the family to use?',answer:'A well-planned setup keeps everyday actions simple, with clearly labelled controls and routines such as “Good night” or “Away”. Depending on the installation, familiar wall switches can remain available so family members do not need to use a phone for every task.'},
+];
+
+function FAQSection(){
+ const [openIndex,setOpenIndex]=useState<number|null>(null);
+ return <section className="faq-section" id="faq" aria-labelledby="faq-title">
+  <h2 id="faq-title">Frequently asked questions</h2>
+  <p className="faq-intro">A little clarity before you make your home smarter.</p>
+  <div className="faq-list">{faqs.map((faq,index)=>{
+   const open=openIndex===index;
+   return <article className="faq-item" key={faq.question}>
+    <h3><button className="faq-question" id={`faq-question-${index}`} aria-expanded={open} aria-controls={`faq-answer-${index}`} onClick={()=>setOpenIndex(open?null:index)}>{faq.question}<span className="faq-toggle" aria-hidden="true">{open?'−':'+'}</span></button></h3>
+    <div className={`faq-answer${open?' is-open':''}`} id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} aria-hidden={!open}><div className="faq-answer-inner"><p>{faq.answer}</p></div></div>
+   </article>;
+  })}</div>
+ </section>;
+}
+
+export default function Homepage(){return <div className="abhee-experience hero-only"><Hero/><ReferenceSolutions/><ProjectsSection/><WhyAbheeSection/><FAQSection/></div>}

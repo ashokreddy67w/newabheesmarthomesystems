@@ -1,9 +1,8 @@
 'use client';
 import {useState} from 'react';
 import Image from 'next/image';
-import {ImageIcon, ArrowUpRight} from 'lucide-react';
+import {ImageIcon} from 'lucide-react';
 import {products, productFilters, type Product} from '@/lib/products';
-import {business} from '@/lib/experience-content';
 import styles from './ProductsPage.module.css';
 
 function ProductImage({product, available}: {product: Product; available: boolean}) {
@@ -31,7 +30,7 @@ export default function ProductsPage({availableImages}: {availableImages: string
      <article>
       <ProductImage product={product} available={availableImages.includes(product.image)}/>
       <div className={styles.copy}><h3>{product.name}</h3><p>{product.description}</p>
-       <a className={styles.enquire} href={`mailto:${business.email}?subject=${encodeURIComponent(`Product enquiry: ${product.name}`)}`} aria-label={`Enquire about ${product.name}`}>Enquire Now <ArrowUpRight size={17} aria-hidden="true"/></a>
+       <ul className={styles.points}>{product.points.map(point=><li key={point}>{point}</li>)}</ul>
       </div>
      </article>
     </li>)}
