@@ -9,7 +9,7 @@ const heroContent = [
  {image:images.heroImages[2],category:'HOME THEATER'},
 ];
 // Reference-locked hero: keep copy, composition, and styling independent of the experience below.
-function Hero(){return <section className="locked-hero" id="hero" aria-label="ABHEE smart home systems">
+function Hero(){return <section className="locked-hero" aria-label="ABHEE smart home systems">
 <div className="locked-hero-copy">
 <p className="locked-eyebrow">Smart home systems, built for Indian homes</p>
 <h1>A home that responds<br/><span>before you ask.</span></h1>
@@ -21,6 +21,33 @@ function Hero(){return <section className="locked-hero" id="hero" aria-label="AB
 </div>
 </article>)}</div>
 </section>}
+
+function HomeHero(){return <section className="home-hero" aria-labelledby="home-hero-title">
+ <div className="home-hero-media"><ImagePlaceholder image={projects[1].image}/></div>
+ <div className="home-hero-content">
+  <p className="home-hero-eyebrow">A smarter way to feel at home</p>
+  <h2 id="home-hero-title">Everyday living,<br/><span>beautifully connected.</span></h2>
+  <p className="home-hero-description">Lighting, comfort, security and entertainment working together around the way you live.</p>
+  <a className="home-hero-link" href="#solutions">Explore our services <span aria-hidden="true">↗</span></a>
+ </div>
+ </section>}
+
+function HeroCarousel(){
+ const [activeSlide,setActiveSlide]=useState(0);
+ const touchStart=useRef<number|null>(null);
+ const move=(direction:number)=>setActiveSlide(current=>(current+direction+2)%2);
+ return <div className="hero-carousel" id="hero" role="region" aria-roledescription="carousel" aria-label="Home page hero" onTouchStart={event=>{touchStart.current=event.touches[0].clientX;}} onTouchEnd={event=>{if(touchStart.current===null)return;const distance=event.changedTouches[0].clientX-touchStart.current;if(Math.abs(distance)>50)move(distance<0?1:-1);touchStart.current=null;}}>
+  <div className="hero-carousel-slide" key={activeSlide}>{activeSlide===0?<Hero/>:<HomeHero/>}</div>
+  <div className="hero-carousel-controls" aria-label="Hero slides">
+   <button type="button" onClick={()=>move(-1)} aria-label="Previous hero slide">←</button>
+   <div className="hero-carousel-dots">
+    <button type="button" className={activeSlide===0?'is-active':''} onClick={()=>setActiveSlide(0)} aria-label="Show smart home systems slide" aria-current={activeSlide===0?'true':undefined}/>
+    <button type="button" className={activeSlide===1?'is-active':''} onClick={()=>setActiveSlide(1)} aria-label="Show connected home slide" aria-current={activeSlide===1?'true':undefined}/>
+   </div>
+   <button type="button" onClick={()=>move(1)} aria-label="Next hero slide">→</button>
+  </div>
+ </div>;
+}
 
 function ReferenceSolutions(){
  const track=useRef<HTMLDivElement>(null);
@@ -119,4 +146,4 @@ function FAQSection(){
  </section>;
 }
 
-export default function Homepage(){return <div className="abhee-experience hero-only"><Hero/><ReferenceSolutions/><ProjectsSection/><WhyAbheeSection/><FAQSection/></div>}
+export default function Homepage(){return <div className="abhee-experience hero-only"><HeroCarousel/><ReferenceSolutions/><ProjectsSection/><WhyAbheeSection/><FAQSection/></div>}
