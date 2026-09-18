@@ -289,27 +289,15 @@ body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,Helveti
 .hero-only .locked-photo{position:static;inset:auto;width:100%;height:auto;margin:0;transform:none}
 .hero-only .locked-photo .locked-photo-media{height:auto;aspect-ratio:4/3;border-radius:12px}
 .hero-only .locked-photo .media-placeholder{height:100%;aspect-ratio:auto!important}
-.hero-carousel{background:var(--paper)}
-.hero-carousel-slide{animation:hero-slide-in .35s ease both}
-.hero-carousel-controls{display:flex;align-items:center;justify-content:center;gap:24px;min-height:64px;padding:8px var(--page-gutter)}
-.hero-carousel-controls>button{display:grid;place-items:center;width:40px;height:40px;border:1px solid #c9d2d0;border-radius:50%;background:transparent;color:#263a38;font-size:20px;cursor:pointer}
-.hero-carousel-controls>button:hover,.hero-carousel-controls>button:focus-visible{background:#e9f0ee}
-.hero-carousel-dots{display:flex;align-items:center;gap:10px}
-.hero-carousel-dots button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:#aebcba;cursor:pointer}
-.hero-carousel-dots button.is-active{background:var(--brand-blue);transform:scale(1.25)}
-@keyframes hero-slide-in{from{opacity:.4;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
-@media(prefers-reduced-motion:reduce){.hero-carousel-slide{animation:none}}
 .home-hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:clamp(440px,48vw,620px);overflow:hidden;background:#29312f;color:#fff}
 .home-hero-media,.home-hero-media .media-placeholder{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto!important}
 .home-hero-media img{object-position:center 55%}
 .home-hero:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,20,22,.82) 0%,rgba(9,20,22,.55) 47%,rgba(9,20,22,.1) 100%);pointer-events:none}
 .home-hero-content{position:relative;z-index:2;width:min(100%,calc(var(--page-width) + 2 * var(--page-gutter)));margin:0 auto;padding:64px var(--page-gutter)}
 .home-hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#d8e8e5}
-.abhee-experience .home-hero h2{max-width:820px;margin:18px 0 20px;font-size:clamp(42px,5.5vw,76px);line-height:1.05;letter-spacing:-.045em;font-weight:600;color:#fff}
-.home-hero h2 span{color:#cce3df}
+.abhee-experience .home-hero h1{max-width:820px;margin:18px 0 20px;font-size:clamp(42px,5.5vw,76px);line-height:1.05;letter-spacing:-.045em;font-weight:600;color:#fff}
+.home-hero h1 span{color:#cce3df}
 .home-hero-description{max-width:490px;font-size:18px;line-height:1.6;color:#f1f5f4}
-.home-hero-link{display:inline-flex;align-items:center;gap:32px;margin-top:28px;padding:13px 0;border-bottom:1px solid currentColor;font-size:14px;font-weight:600;color:#fff;text-decoration:none}
-.home-hero-link:hover,.home-hero-link:focus-visible{color:#cce3df}
 .locked-item-content .locked-item-category{font-size:11px;letter-spacing:.08em;color:var(--brand-blue)}
 .reference-solutions,.projects-reference,.why-reference{width:min(100%,calc(var(--page-width) + 2 * var(--page-gutter)));max-width:none;margin:0 auto;padding:var(--section-space) var(--page-gutter)}
 .abhee-experience .reference-solutions>h2,.projects-reference-heading h2,.abhee-experience .why-reference h2{font-size:clamp(30px,3.2vw,42px);line-height:1.15;font-weight:600;letter-spacing:-.035em}
@@ -349,7 +337,7 @@ body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,Helveti
  .home-hero{min-height:520px;align-items:end}
  .home-hero:after{background:linear-gradient(0deg,rgba(9,20,22,.86),rgba(9,20,22,.32) 78%)}
  .home-hero-content{padding:56px var(--page-gutter)}
- .abhee-experience .home-hero h2{font-size:clamp(38px,8vw,58px)}
+ .abhee-experience .home-hero h1{font-size:clamp(38px,8vw,58px)}
  .home-hero-description{font-size:16px}
  .locked-item-content .locked-item-category{font-size:9px;line-height:1.5;letter-spacing:.02em}
  .reference-solutions,.projects-reference,.why-reference{padding:var(--section-space) var(--page-gutter)}
