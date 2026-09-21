@@ -1,6 +1,7 @@
 'use client';
 import {useState} from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {ImageIcon} from 'lucide-react';
 import {products, productFilters, type Product} from '@/lib/products';
 import styles from './ProductsPage.module.css';
@@ -28,9 +29,10 @@ export default function ProductsPage({availableImages}: {availableImages: string
    <ul id="product-grid" className={styles.grid} key={active}>
     {visible.map(product=><li key={product.image} className={styles.card}>
      <article>
-      <ProductImage product={product} available={availableImages.includes(product.image)}/>
-      <div className={styles.copy}><h3>{product.name}</h3><p>{product.description}</p>
+      <Link className={styles.imageLink} href={`/products/${product.slug}`} aria-label={`View ${product.name} types`}><ProductImage product={product} available={availableImages.includes(product.image)}/></Link>
+      <div className={styles.copy}><h3><Link href={`/products/${product.slug}`}>{product.name}</Link></h3><p>{product.description}</p>
        <ul className={styles.points}>{product.points.map(point=><li key={point}>{point}</li>)}</ul>
+       <Link className={styles.viewTypes} href={`/products/${product.slug}`}>View types <span aria-hidden="true">→</span></Link>
       </div>
      </article>
     </li>)}

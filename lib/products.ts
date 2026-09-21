@@ -1,13 +1,13 @@
 export const productFilters = ['All', 'Home Automation', 'Security & Access', 'Audio & Video', 'Community Solutions', 'Sports & Infrastructure', 'Function Hall Solutions'] as const;
 export type ProductCategory = Exclude<typeof productFilters[number], 'All'>;
-export type Product = {name: string; categories: ProductCategory[]; image: string; alt: string; description: string; points: string[]};
+export type Product = {slug: string; name: string; categories: ProductCategory[]; image: string; alt: string; description: string; points: string[]};
 const security: ProductCategory = 'Security & Access';
 const automation: ProductCategory = 'Home Automation';
 const av: ProductCategory = 'Audio & Video';
 const community: ProductCategory = 'Community Solutions';
 const sports: ProductCategory = 'Sports & Infrastructure';
 const hall: ProductCategory = 'Function Hall Solutions';
-const product = (slug: string, name: string, categories: ProductCategory[], description: string, alt: string, points: string[]): Product => ({name, categories, image: `/images/products/${slug}.jpg`, description, alt, points});
+const product = (slug: string, name: string, categories: ProductCategory[], description: string, alt: string, points: string[]): Product => ({slug, name, categories, image: `/images/products/${slug}.jpg`, description, alt, points});
 
 export const products: Product[] = [
  product('home-automation', 'Home Automation', [automation], 'Bring everyday home controls together.', 'Home automation control system', ["Connect compatible lighting, curtains and climate controls.", "Create routines for mornings, evenings and time away.", "Choose controls that suit your household."]),
@@ -46,3 +46,71 @@ export const products: Product[] = [
  product('function-hall-chairs', 'Function Hall Chairs', [hall], 'Seating for gatherings and celebrations.', 'Function hall event chairs', ["Plan seating for meetings, celebrations and gatherings.", "Choose upholstery and frames to suit the venue.", "Consider storage, cleaning and seating arrangements."]),
  product('premium-sofas-lounge-seating', 'Premium Sofas & Lounge Seating', [hall], 'Comfortable seating for event lounge spaces.', 'Premium sofa and event lounge seating', ["Create relaxed seating areas for guests.", "Coordinate sofa sizes and fabrics with the venue.", "Leave comfortable circulation space around seating."]),
 ];
+
+// General product types for browsing. Replace these with ABHEE's confirmed models
+// and availability when the business catalog is supplied.
+export const productTypes: Record<string, string[]> = {
+ 'home-automation': ['Touch switchboards'],
+ 'digital-door-lock': ['Fingerprint locks', 'PIN locks', 'Card access locks', 'App connected locks'],
+ 'home-theater': ['Dedicated theater rooms', 'Living room cinema setups', 'Surround sound systems', 'Acoustic and lighting packages'],
+ cctv: ['Indoor cameras', 'Outdoor cameras'],
+ 'intercom-systems': ['Audio intercoms', 'Video intercoms', 'Multi apartment intercoms'],
+ 'video-door-phone': ['Wired video door phones', 'Wi-Fi video door phones', 'Multi door video systems'],
+ 'access-control': ['Card readers', 'PIN keypads', 'Biometric readers', 'Multi door controllers'],
+ 'remote-gates': ['Sliding gate motors', 'Swing gate motors'],
+ 'boom-barriers': ['Manual boom barriers', 'Automatic boom barriers', 'Access integrated barriers'],
+ 'security-sensors': ['Motion sensors', 'Door and window sensors', 'Glass break sensors', 'Smoke and gas sensors'],
+ 'solar-fencing': ['Solar energizers', 'Perimeter wire systems', 'Alarm and monitoring units'],
+ 'motorized-curtains': ['Straight curtain tracks', 'Curved curtain tracks', 'Remote and app controlled curtains'],
+ 'motorized-blinds': ['Roller blinds', 'Venetian blinds', 'Roman blinds', 'Remote and app controlled blinds'],
+ 'transparent-elevation-motorized-shutters': ['Transparent rolling shutters', 'Perforated shutters', 'Motor and control options'],
+ 'pa-sound-systems': ['Ceiling speaker systems', 'Wall speaker systems', 'Horn speaker systems', 'Microphones and mixers'],
+ projectors: ['Home cinema projectors', 'Business projectors', 'Short throw projectors'],
+ 'projection-screens': ['Fixed frame screens', 'Manual pull down screens', 'Motorized screens'],
+ 'led-display-screens': ['Indoor LED displays', 'Outdoor LED displays', 'Video walls'],
+ 'podiums-with-speakers': ['Portable podiums', 'Integrated speaker podiums', 'Wireless microphone podiums'],
+ 'artificial-lawn': ['Landscape turf', 'Pet friendly turf', 'Balcony and terrace turf'],
+ 'wooden-flooring': ['Solid wood flooring', 'Engineered wood flooring', 'Laminate flooring'],
+ 'swimming-pools': ['Residential pools', 'Community pools', 'Filtration and lighting systems'],
+ 'gym-equipment': ['Cardio equipment', 'Strength equipment', 'Free weights and accessories'],
+ 'gym-flooring': ['Rubber tiles', 'Rubber rolls', 'Interlocking gym mats'],
+ 'running-track-epdm': ['EPDM running tracks', 'Jogging paths', 'Track marking options'],
+ 'wooden-shuttle-court': ['Solid wood courts', 'Engineered wood courts', 'Court line and net packages'],
+ 'basketball-court': ['Indoor courts', 'Outdoor courts', 'Hoops and court accessories'],
+ 'volleyball-court': ['Indoor courts', 'Outdoor courts', 'Net and post systems'],
+ 'multi-sport-turf': ['Cricket practice turf', 'Football turf', 'Multi sport turf'],
+ 'astro-turf': ['Sports turf', 'Recreation turf', 'Turf infill and accessories'],
+ 'indoor-games': ['Table tennis setups', 'Carrom setups', 'Board game areas'],
+ 'pp-sports-tiles': ['Basketball tiles', 'Multi sport tiles', 'Court edge and marking tiles'],
+ 'synthetic-sports-flooring-paint': ['Acrylic court coatings', 'Court line paints', 'Surface repair coatings'],
+ 'function-hall-chairs': ['Banquet chairs', 'Folding chairs', 'Stackable chairs'],
+ 'premium-sofas-lounge-seating': ['Two seater sofas', 'Three seater sofas', 'Lounge chairs and ottomans'],
+};
+
+// Add a type-specific image here when available. Missing images display a
+// placeholder so a different type is never represented by the same photo.
+export const productTypeImages: Record<string, Record<string, string>> = {
+ 'digital-door-lock': {
+  'Fingerprint locks': '/images/product-types/digital-door-lock/fingerprint-lock.jpg',
+  'PIN locks': '/images/product-types/digital-door-lock/pin-lock.jpg',
+  'Card access locks': '/images/product-types/digital-door-lock/card-access-lock.jpg',
+  'App connected locks': '/images/product-types/digital-door-lock/app-connected-lock.jpg',
+ },
+ 'remote-gates': {
+  'Swing gate motors': '/images/product-types/remote-gates/swing-gate-motor-actual.jpeg',
+ },
+ cctv: {
+  'Indoor cameras': '/images/product-types/cctv/indoor-camera.jpg',
+  'Outdoor cameras': '/images/product-types/cctv/outdoor-camera.jpg',
+ },
+};
+
+export const productTypeGalleries: Record<string, Record<string, string[]>> = {
+ 'home-automation': {
+  'Touch switchboards': [
+   '/images/product-types/home-automation/6-module-smart-switch-board-1.jpg',
+   '/images/product-types/home-automation/6-module-smart-switch-board-2.jpg',
+   '/images/product-types/home-automation/6-module-smart-switch-board-3.jpg',
+  ],
+ },
+};

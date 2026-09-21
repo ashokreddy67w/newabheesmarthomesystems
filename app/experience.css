@@ -270,8 +270,8 @@ body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,Helveti
 .new-footer :focus-visible{outline-color:#fff}
 
 /* Persistent WhatsApp contact on desktop and mobile. */
-.whatsapp{width:56px;height:56px;right:22px;bottom:calc(22px + env(safe-area-inset-bottom));background:#128c4a;color:#fff;border:0;box-shadow:0 4px 16px #0003;transition:background .2s}
-.whatsapp:hover{background:#0c703a}
+.whatsapp{width:56px;height:56px;right:22px;bottom:calc(22px + env(safe-area-inset-bottom));background:#25d366;color:#fff;border:0;box-shadow:0 4px 16px #0003;transition:background .2s}
+.whatsapp:hover{background:#1fba59}
 .whatsapp svg{width:30px;height:30px}
 @media(max-width:800px){.whatsapp{width:50px;height:50px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}}
 

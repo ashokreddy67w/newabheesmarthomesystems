@@ -7,7 +7,7 @@ function HomeHero(){return <section className="home-hero" id="hero" aria-labelle
  <div className="home-hero-media"><ImagePlaceholder image={projects[1].image}/></div>
  <div className="home-hero-content">
   <p className="home-hero-eyebrow">A smarter way to feel at home</p>
-  <h1 id="home-hero-title">Everyday living,<br/><span>beautifully connected.</span></h1>
+  <h1 id="home-hero-title">Make your home smarter<br/><span>and your life easier.</span></h1>
   <p className="home-hero-description">Lighting, comfort, security and entertainment working together around the way you live.</p>
  </div>
  </section>}

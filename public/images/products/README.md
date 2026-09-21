@@ -6,7 +6,11 @@ Use high-quality JPEG images, ideally 1600 × 1200 (4:3). Keep the subject cente
 
 After adding or replacing photographs, rebuild and redeploy (`npm run build`). Restart the development server if needed. If replacing a deployed photo under the same name, use a new versioned filename and update its slug in `lib/products.ts` to avoid stale optimized image caches.
 
-Names, descriptions, alt text, image paths and category memberships are in `lib/products.ts`. Shared products have multiple categories and appear only once in All. Enquire Now opens an email addressed to the existing business email with the product name in its subject.
+Names, descriptions, alt text, image paths and category memberships are in `lib/products.ts`. Shared products have multiple categories and appear only once in All. Each detail page has a WhatsApp link asking about that product's available options.
+
+Each product card links to a detail page. The type lists in `lib/products.ts` are general examples for browsing, not confirmed ABHEE stock. Type images live under `public/images/product-types/<product-slug>/`; most are generated examples, while Home Automation uses three supplied six-module switchboard photos. `productTypeImages` handles custom filenames, `productTypeGalleries` groups multiple views, and other files follow the type name as a slug. A missing image displays “Image coming soon” rather than reusing a different type's photo. Replace generated examples with actual product photos and confirmed models when the catalog is provided.
+
+The Swing gate motors card uses a supplied photo from the gate motor videos folder. The Sliding gate motors card intentionally awaits a verified sliding motor photo.
 
 Content follows the product list supplied in the request; the referenced PDF was not available in this session.
 
