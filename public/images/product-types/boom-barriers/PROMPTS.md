@@ -1,0 +1,5 @@
+Generated with the built-in imagegen tool. Illustrative product categories, not confirmed models or completed ABHEE projects.
+
+## accessBarrierPrompt
+
+Use case: photorealistic-natural. Landscape 4:3 website product category image for boom barrier with integrated access control. Realistic professional photograph of a modern commercial parking entrance. Show the complete automatic boom barrier mechanism: a sturdy pedestal on a small traffic island and a single red-and-white striped barrier arm extending horizontally across one entry lane. Clearly visible beside and BEFORE the barrier on the approach side is a separate waist-height access-control pedestal with a black RFID card reader and keypad with a small green indicator. Also a rectangular long-range RFID antenna on a nearby pole aimed toward incoming vehicles. Both the barrier arm and access reader must be prominent, fully within frame and visibly part of the same entry setup. Clean office campus background, daylight, no people, vehicles, logos, text overlays, watermark or imaginary wireless beams.

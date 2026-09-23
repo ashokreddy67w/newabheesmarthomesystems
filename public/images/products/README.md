@@ -10,7 +10,7 @@ Names, descriptions, alt text, image paths and category memberships are in `lib/
 
 Each product card links to a detail page. The type lists in `lib/products.ts` are general examples for browsing, not confirmed ABHEE stock. Type images live under `public/images/product-types/<product-slug>/`; most are generated examples, while Home Automation uses three supplied six-module switchboard photos. `productTypeImages` handles custom filenames, `productTypeGalleries` groups multiple views, and other files follow the type name as a slug. A missing image displays “Image coming soon” rather than reusing a different type's photo. Replace generated examples with actual product photos and confirmed models when the catalog is provided.
 
-The Swing gate motors card uses a supplied photo from the gate motor videos folder. The Sliding gate motors card intentionally awaits a verified sliding motor photo.
+The Swing gate motors card uses a supplied photo from the gate motor videos folder. The Sliding gate motors card uses an illustrative image of a rack-driven sliding gate motor. Swing gates, sliding gates, arm gate motors, Wi-Fi cameras, solar cameras and the boom barrier with access control use generated illustrations; their prompts are saved alongside the assets.
 
 Content follows the product list supplied in the request; the referenced PDF was not available in this session.
 
