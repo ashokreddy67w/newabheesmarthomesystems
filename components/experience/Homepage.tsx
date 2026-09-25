@@ -1,12 +1,13 @@
 'use client';
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {referenceSolutions,projects} from '@/lib/experience-content';
+import Image from 'next/image';
+import Link from 'next/link';
+import {images,referenceSolutions,projects} from '@/lib/experience-content';
 import {ImagePlaceholder} from './Primitives';
-import {Home, Wrench, Network, Cpu, Headphones, ShieldCheck} from 'lucide-react';
+import {Home, Wrench, Network, Cpu, Headphones, ShieldCheck, Lightbulb, PanelsTopLeft, Tv, Projector, LockKeyhole, Fence, PanelTop, Sun} from 'lucide-react';
 function HomeHero(){return <section className="home-hero" id="hero" aria-labelledby="home-hero-title">
- <div className="home-hero-media"><ImagePlaceholder image={projects[1].image}/></div>
+ <div className="home-hero-media"><ImagePlaceholder image={images.homeHero} eager/></div>
  <div className="home-hero-content">
-  <p className="home-hero-eyebrow">A smarter way to feel at home</p>
   <h1 id="home-hero-title">Make your home smarter<br/><span>and your life easier.</span></h1>
   <p className="home-hero-description">Lighting, comfort, security and entertainment working together around the way you live.</p>
  </div>
@@ -52,11 +53,34 @@ function ReferenceSolutions(){
  </div>
  </section>}
 
+const ecosystemServices = [
+ {name:'Lighting',slug:'home-automation',icon:Lightbulb,position:'lighting',line:'330,100 390,100 480,210',point:[480,210]},
+ {name:'Curtains & Blinds',slug:'motorized-curtains',icon:PanelsTopLeft,position:'curtains',line:'270,225 320,225 390,295',point:[390,295]},
+ {name:'Home Theater',slug:'home-theater',icon:Tv,position:'theater',line:'250,370 330,370 370,385',point:[370,385]},
+ {name:'Home Automation',slug:'home-automation',icon:Home,position:'automation',line:'290,570 350,570 420,500',point:[420,500]},
+ {name:'Projectors & Audio',slug:'projectors',icon:Projector,position:'audio',line:'465,685 490,635 550,550',point:[550,550]},
+ {name:'Smart Door Locks',slug:'digital-door-lock',icon:LockKeyhole,position:'locks',line:'815,45 775,45 740,140',point:[740,140]},
+ {name:'Gate Automation',slug:'remote-gates',icon:Fence,position:'gates',line:'1120,200 1070,200 995,320',point:[995,320]},
+ {name:'Automatic Shutters',slug:'transparent-elevation-motorized-shutters',icon:PanelTop,position:'shutters',line:'1150,365 1100,365 1060,355',point:[1060,355]},
+ {name:'Solar Fencing',slug:'solar-fencing',icon:Sun,position:'solar',line:'1090,570 1040,570 980,505',point:[980,505]},
+ {name:'Security',detail:'CCTV | Sensors | Fencing',slug:'cctv',icon:ShieldCheck,position:'security',line:'840,680 840,575',point:[840,575]},
+];
+
+function EcosystemSection(){return <section className="ecosystem-section" id="ecosystem" aria-labelledby="ecosystem-title">
+ <div className="ecosystem-heading"><p>OUR ECOSYSTEM<span aria-hidden="true"/></p><h2 id="ecosystem-title">One Property. Multiple Systems.<br/>One Integrated Experience.</h2></div>
+ <div className="ecosystem-diagram">
+  <div className="ecosystem-house"><Image src="/images/ecosystem-house.png" alt="Isometric smart home with connected living spaces, a home theater, garage and landscaped entrance." width={1536} height={1024} sizes="(max-width: 800px) 100vw, 75vw"/></div>
+  <div className="ecosystem-brand"><Image src="/images/abhee-logo.png" alt="ABHEE Smart Home Systems" width={1736} height={454} sizes="(max-width: 800px) 100px, 160px"/></div>
+  <svg className="ecosystem-connectors" viewBox="0 0 1400 760" fill="none" aria-hidden="true">{ecosystemServices.map(service=><g key={service.position}><polyline points={service.line}/><circle cx={service.point[0]} cy={service.point[1]} r="5"/></g>)}</svg>
+  <ul className="ecosystem-services">{ecosystemServices.map(({name,detail,slug,icon:Icon,position})=><li className={`ecosystem-service ecosystem-${position}`} key={position}><Link href={`/products/${slug}`}><span className="ecosystem-icon"><Icon aria-hidden="true" strokeWidth={1.4}/></span><span className="ecosystem-label">{name}{detail&&<small>{detail}</small>}</span></Link></li>)}</ul>
+ </div>
+ </section>}
+
 function ProjectsSection(){return <section className="projects-reference" id="projects" aria-labelledby="projects-reference-title">
  <div className="projects-reference-heading"><h2 id="projects-reference-title">Projects</h2><p>Illustrative smart-home possibilities.</p></div>
- <div className="projects-reference-grid">{projects.map(project=><article className="project-reference-item" key={project.image.src}>
-  <div className="project-reference-image"><ImagePlaceholder image={project.image}/></div>
-  <div className="project-reference-copy"><p className="project-reference-category">{project.category}</p><h3>{project.title}</h3><p>{project.description}</p></div>
+ <div className="projects-reference-grid">{projects.map(project=><article className="project-reference-item" key={project.slug}>
+  {project.image.src&&<Link href={`/projects/${project.slug}`} className="project-reference-image" aria-label={`Explore ${project.title}`}><ImagePlaceholder image={project.image}/></Link>}
+  <div className="project-reference-copy"><p className="project-reference-category">{project.category}</p><h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3><p>{project.description}</p><Link className="project-explore" href={`/projects/${project.slug}`}>Explore more <span aria-hidden="true">↗</span></Link></div>
  </article>)}</div>
  </section>}
 
@@ -109,4 +133,4 @@ function FAQSection(){
  </section>;
 }
 
-export default function Homepage(){return <div className="abhee-experience hero-only"><HomeHero/><ReferenceSolutions/><ProjectsSection/><WhyAbheeSection/><FAQSection/></div>}
+export default function Homepage(){return <div className="abhee-experience hero-only"><HomeHero/><ReferenceSolutions/><EcosystemSection/><ProjectsSection/><WhyAbheeSection/><FAQSection/></div>}

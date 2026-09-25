@@ -12,6 +12,7 @@
     };
 
     export const images = {
+    homeHero: media('projects/project-02','Contemporary two-storey villa with illuminated entrance and landscaped garden','16/9'),
     heroImages: [
     media('hero-02','Automated sliding gate at a villa entrance','318/271'),
     {...homeAutomationImage,ratio:'318/270'},
@@ -22,7 +23,7 @@
     export const referenceSolutions = [
     {title:'Gate Automation',description:'Motorized sliding and swing gates with convenient remote access for your home entrance.',image:media('services/gate-automation-new-20260910','Installed sliding gate motor, rack, track and safety sensor')},
     {title:'Home Automation',description:'Bring lighting, curtains, climate and everyday routines together with simple, connected control.',image:homeAutomationImage},
-    {title:'Home Theater',description:'Enjoy a dedicated cinema experience with projection, surround sound, acoustic treatment and coordinated lighting.',image:media('services/home-theater-new-20260910','Home theater with ceiling-mounted projector, screen, speakers and recliner seating')},
+    {title:'Home Theater',description:'Enjoy a dedicated cinema experience with projection, surround sound, acoustic treatment and coordinated lighting.',image:{src:'/images/projects/home-theater-supplied.png',alt:'Supplied home theatre with recliners, projector and acoustic wall panels',ratio:'3/4'}},
     {title:'VDP · Video Door Phone',description:'See and speak with visitors at your entrance, and manage door access from an indoor video monitor.',image:media('services/video-door-phone-new-20260910','Wall-mounted video door phone showing a villa entrance')},
     {title:'Climate & Lighting',description:'Intelligent lighting, AC and motorized blinds that create the right comfort and atmosphere throughout the day.',image:media('services/climate-lighting-new-20260910','Smart thermostat mounted on a living room wall')},
     {title:'CCTV Camera',description:'Round-the-clock CCTV monitoring with remote viewing, so you can check in on your property from anywhere.',image:media('services/cctv-camera-new-20260910','White turret CCTV camera mounted under a villa eave')},
@@ -34,10 +35,10 @@
     ];
 
     export const projects = [
-    {category:'RESIDENTIAL · SMART HOME',title:'Luxury Smart Residence',description:'A complete smart-home experience integrating lighting, security, climate, entertainment and access.',image:media('projects/project-01','Residence living room with integrated lighting, curtains and a television','16/9')},
-    {category:'RESIDENTIAL · AUTOMATION',title:'Connected Villa',description:'Whole-home automation designed around everyday routines, intelligent lighting, climate control and seamless access.',image:media('projects/project-02','Contemporary two-storey villa with illuminated entrance and landscaped garden','16/9')},
-    {category:'RESIDENTIAL · SECURITY',title:'Intelligent Home Security',description:'Integrated access, smart locks, video door phones and surveillance for secure and effortless living.',image:media('projects/project-03','Villa entrance with a security camera, gate and video intercom','16/9')},
-    {category:'HOME THEATRE · ENTERTAINMENT',title:'Private Home Cinema',description:'A dedicated entertainment environment combining projection, audio, lighting and motorized curtains.',image:media('projects/project-04','Private cinema with a projection screen, two rows of seats and acoustic wall panels','16/9')},
+    {category:'RESIDENTIAL · SMART HOME',slug:'luxury-smart-residence',title:'Luxury Smart Residence',description:'A complete smart-home experience integrating lighting, security, climate, entertainment and access.',image:media('projects/photo-5998120','Photograph of a furnished living room with large windows','16/9')},
+    {category:'RESIDENTIAL · AUTOMATION',slug:'connected-villa',title:'Connected Villa',description:'Whole-home automation designed around everyday routines, intelligent lighting, climate control and seamless access.',image:{src:'/images/projects/connected-villa-supplied.png',alt:'Connected Villa with timber facade, black entrance gates and perimeter security fencing',ratio:'4/3'}},
+    {category:'RESIDENTIAL · SECURITY',slug:'intelligent-home-security',title:'Intelligent Home Security',description:'Integrated access, smart locks, video door phones and surveillance for secure and effortless living.',image:{src:'/images/projects/security-entrance-cctv.png',alt:'Illustrative CCTV camera overlooking a residential entrance',ratio:'3/2'}},
+    {category:'HOME THEATRE · ENTERTAINMENT',slug:'private-home-cinema',title:'Private Home Cinema',description:'A dedicated entertainment environment combining projection, audio, lighting and motorized curtains.',image:{src:'/images/projects/home-theater-supplied.png',alt:'Home theatre with recliners and a ceiling projector',ratio:'3/4'}},
     ];
 
     export const footerColumns = {
