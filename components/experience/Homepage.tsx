@@ -43,7 +43,7 @@ function ReferenceSolutions(){
  <p className="reference-solutions-subtitle">Smart home systems designed around the way you live.</p>
  <div className="service-carousel" role="region" aria-roledescription="carousel" aria-label="Smart home services">
  <div ref={track} className="reference-solutions-cards" tabIndex={0} aria-label="Swipe or scroll to explore services" onPointerDown={delayAutoplay} onPointerMove={event=>{if(event.buttons) delayAutoplay();}} onPointerUp={delayAutoplay} onPointerCancel={delayAutoplay} onWheel={delayAutoplay} onKeyDown={event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();delayAutoplay();advance(event.key==='ArrowRight'?1:-1);}}}>{referenceSolutions.map((solution,index)=><article className="reference-solution-card" key={solution.image.src}>
-  <div className="reference-solution-image"><ImagePlaceholder image={solution.image}/></div>
+  <div className="reference-solution-image"><ImagePlaceholder image={solution.image} sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"/></div>
   <div className="reference-solution-copy">
    <p className="reference-solution-number">{String(index+1).padStart(2,'0')}.</p>
    <h3>{solution.title}</h3>
@@ -69,7 +69,7 @@ const ecosystemServices = [
 function EcosystemSection(){return <section className="ecosystem-section" id="ecosystem" aria-labelledby="ecosystem-title">
  <div className="ecosystem-heading"><p>OUR ECOSYSTEM<span aria-hidden="true"/></p><h2 id="ecosystem-title">One Property. Multiple Systems.<br/>One Integrated Experience.</h2></div>
  <div className="ecosystem-diagram">
-  <div className="ecosystem-house"><Image src="/images/ecosystem-house.png" alt="Isometric smart home with connected living spaces, a home theater, garage and landscaped entrance." width={1536} height={1024} sizes="(max-width: 800px) 100vw, 75vw"/></div>
+  <div className="ecosystem-house"><Image src="/images/ecosystem-house.webp" alt="Isometric smart home with connected living spaces, a home theater, garage and landscaped entrance." width={1536} height={1024} sizes="(max-width: 800px) 100vw, 75vw"/></div>
   <div className="ecosystem-brand"><Image src="/images/abhee-logo.png" alt="ABHEE Smart Home Systems" width={1736} height={454} sizes="(max-width: 800px) 100px, 160px"/></div>
   <svg className="ecosystem-connectors" viewBox="0 0 1400 760" fill="none" aria-hidden="true">{ecosystemServices.map(service=><g key={service.position}><polyline points={service.line}/><circle cx={service.point[0]} cy={service.point[1]} r="5"/></g>)}</svg>
   <ul className="ecosystem-services">{ecosystemServices.map(({name,detail,slug,icon:Icon,position})=><li className={`ecosystem-service ecosystem-${position}`} key={position}><Link href={`/products/${slug}`}><span className="ecosystem-icon"><Icon aria-hidden="true" strokeWidth={1.4}/></span><span className="ecosystem-label">{name}{detail&&<small>{detail}</small>}</span></Link></li>)}</ul>
@@ -79,7 +79,7 @@ function EcosystemSection(){return <section className="ecosystem-section" id="ec
 function ProjectsSection(){return <section className="projects-reference" id="projects" aria-labelledby="projects-reference-title">
  <div className="projects-reference-heading"><h2 id="projects-reference-title">Projects</h2><p>Illustrative smart-home possibilities.</p></div>
  <div className="projects-reference-grid">{projects.map(project=><article className="project-reference-item" key={project.slug}>
-  {project.image.src&&<Link href={`/projects/${project.slug}`} className="project-reference-image" aria-label={`Explore ${project.title}`}><ImagePlaceholder image={project.image}/></Link>}
+  {project.image.src&&<Link href={`/projects/${project.slug}`} className="project-reference-image" aria-label={`Explore ${project.title}`}><ImagePlaceholder image={project.image} sizes="(max-width: 767px) 100vw, 50vw"/></Link>}
   <div className="project-reference-copy"><p className="project-reference-category">{project.category}</p><h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3><p>{project.description}</p><Link className="project-explore" href={`/projects/${project.slug}`}>Explore more <span aria-hidden="true">↗</span></Link></div>
  </article>)}</div>
  </section>}

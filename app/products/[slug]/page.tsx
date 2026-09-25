@@ -50,7 +50,7 @@ export default async function ProductDetail({params}: Props) {
     <p className={styles.description}>{product.description}</p>
     <a className={styles.enquire} href={`https://wa.me/${business.whatsapp}?text=${encodeURIComponent(enquiry)}`} target="_blank" rel="noopener noreferrer">Ask about available options <span aria-hidden="true">↗</span></a>
    </div>
-   <div className={styles.image}>{slug==='home-theater'?<CinemaPreview/>:hasImage?<Image src={product.image} alt={product.alt} fill sizes="(max-width: 800px) 100vw, 50vw" style={{objectFit:'cover'}} priority/>:<span>Image coming soon</span>}</div>
+   <div className={styles.image}>{slug==='home-theater'?<CinemaPreview eager sizes="(max-width: 800px) 100vw, 50vw"/>:hasImage?<Image src={product.image} alt={product.alt} fill sizes="(max-width: 800px) 100vw, 50vw" style={{objectFit:'cover'}} priority/>:<span>Image coming soon</span>}</div>
   </section>
   <section className={styles.types} aria-labelledby="types-title">
    {slug==='digital-door-lock'?<>

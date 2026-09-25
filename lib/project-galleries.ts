@@ -4,7 +4,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
    "title": "Brick-Facade Residence",
    "setting": "Contemporary residential exterior",
-   "image": "/images/projects/connected-villa-brick-residence.png",
+   "image": "/images/projects/connected-villa-brick-residence.webp",
    "description": "A contemporary residence with red brick accents, glass balconies, vertical screens and a timber entrance gate.",
    "features": [
     "Brick facade",
@@ -16,7 +16,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
    "title": "Terraced Residence",
    "setting": "Contemporary residential exterior",
-   "image": "/images/projects/connected-villa-terraced-residence-replacement.png",
+   "image": "/images/projects/connected-villa-terraced-residence-replacement.webp",
    "description": "A contemporary residence with pale stone cladding, glass-fronted balconies and tree-lined gated entrances.",
    "features": [
     "Stone facade",
@@ -28,7 +28,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
    "title": "Glass Balcony Villa",
    "setting": "Contemporary villa exterior",
-   "image": "/images/projects/connected-villa-glass-balconies.png",
+   "image": "/images/projects/connected-villa-glass-balconies.webp",
    "description": "A contemporary three-level villa with glass balconies, timber soffits, cascading greenery and a rooftop spiral staircase.",
    "features": [
     "Glass balconies",
@@ -40,7 +40,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
    "title": "Connected Villa",
    "setting": "Featured residence",
-   "image": "/images/projects/connected-villa-supplied.png",
+   "image": "/images/projects/connected-villa-supplied.webp",
    "description": "A contemporary residence with a timber-screen facade, black entrance gates and perimeter security fencing.",
    "features": [
     "Villa exterior",
@@ -71,7 +71,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
     "title": "Entrance CCTV",
     "setting": "Residential entrance monitoring",
-    "image": "/images/projects/security-entrance-cctv.png",
+    "image": "/images/projects/security-entrance-cctv.webp",
     "description": "A discreet porch-mounted camera illustrates monitoring of a home's gate and driveway.",
     "features": [
       "Entrance monitoring",
@@ -83,7 +83,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
     "title": "Video Door Intercom",
     "setting": "Visitor communication",
-    "image": "/images/projects/security-video-intercom.png",
+    "image": "/images/projects/security-video-intercom.webp",
     "description": "A gate-mounted video intercom illustrates a convenient visitor communication point.",
     "features": [
       "Video intercom",
@@ -95,7 +95,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
     "title": "Smart Door Lock",
     "setting": "Keyless home entrance",
-    "image": "/images/projects/security-smart-door-lock.png",
+    "image": "/images/projects/security-smart-door-lock.webp",
     "description": "A digital lock illustrates fingerprint and keypad access at a timber front door.",
     "features": [
       "Fingerprint access",
@@ -107,7 +107,7 @@ export const projectGalleries: Record<string, ProjectScene[]> = {
   {
     "title": "Perimeter CCTV",
     "setting": "Side passage monitoring",
-    "image": "/images/projects/security-perimeter-cctv.png",
+    "image": "/images/projects/security-perimeter-cctv.webp",
     "description": "An outdoor camera illustrates coverage along a landscaped side passage and garden gate.",
     "features": [
       "Perimeter monitoring",
